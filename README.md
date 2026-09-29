@@ -2,6 +2,16 @@
 
 **Guardá notas privadas en momentos concretos de un video de YouTube y encontralas desde una línea de tiempo propia.**
 
+## Vista previa
+
+Así se ven la línea temporal con marcadores de colores y las notas asociadas a cada momento:
+
+![Prototipo en funcionamiento: marcadores de color y notas temporales](demo/prototipo-notas-temporales.jpg)
+
+Al seleccionar un marcador, la línea temporal permite volver a ese instante:
+
+![Prototipo en funcionamiento: salto a un momento marcado](demo/prototipo-salto-temporal.jpg)
+
 Este proyecto es un prototipo abierto para explorar una idea: convertir los comentarios personales de un video en un mapa visual de momentos. No es una extensión oficial de YouTube ni publica comentarios en YouTube.
 
 ## Estado
