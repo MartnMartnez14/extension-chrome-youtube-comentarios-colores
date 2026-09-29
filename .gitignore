@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+preview.html
+.env
+.env.*
+!.env.example

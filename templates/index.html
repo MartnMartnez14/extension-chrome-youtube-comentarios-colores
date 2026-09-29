@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101114">
+  <title>YT Temporal Comments</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="YT Temporal Comments, inicio">
+        <span class="brand-mark" aria-hidden="true">▶</span>
+        <span>YT <strong>Temporal</strong></span>
+      </a>
+      <span class="privacy"><span class="privacy-dot"></span> Solo en este dispositivo</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">TU MAPA DE MOMENTOS</p>
+      <h1>El video sigue.<br><span>Tus ideas quedan.</span></h1>
+      <p class="intro-copy">Guardá comentarios en momentos exactos y volvé a ellos cuando quieras.</p>
+    </section>
+
+    <form class="video-form" id="video-form" novalidate>
+      <label for="video-url">URL del video</label>
+      <div class="url-row">
+        <input id="video-url" type="url" placeholder="Pegá un enlace de YouTube" autocomplete="url" aria-describedby="url-error">
+        <button type="submit" class="load-button"><span>Cargar video</span><span aria-hidden="true">↗</span></button>
+      </div>
+      <p class="error-message" id="url-error" role="alert" hidden></p>
+    </form>
+
+    <section class="workspace" aria-label="Video y comentarios">
+      <div class="video-column">
+        <div class="player-frame" id="player-frame">
+          <div class="player-placeholder" id="player-placeholder">
+            <div class="play-orbit"><span>▶</span></div>
+            <p>Tu próximo momento importante<br>empieza acá.</p>
+            <span class="placeholder-hint">Cargá un video de YouTube para comenzar</span>
+          </div>
+          <div id="player" aria-label="Reproductor de YouTube"></div>
+        </div>
+        <div class="video-meta" id="video-meta" hidden>
+          <span class="video-indicator"></span>
+          <span id="video-id-label"></span>
+          <span class="meta-divider">·</span>
+          <span id="duration-label">Duración pendiente</span>
+        </div>
+
+        <section class="timeline-card" aria-label="Línea temporal de comentarios">
+          <div class="section-heading timeline-heading">
+            <div><span class="section-index">01</span><h2>Línea de tiempo</h2></div>
+            <span class="comment-count" id="timeline-count">0 momentos</span>
+          </div>
+          <div class="timeline-wrap" id="timeline-wrap">
+            <div class="time-labels"><span>00:00</span><span id="end-time">--:--</span></div>
+            <div class="timeline" id="timeline" role="group" aria-label="Marcadores de comentarios">
+              <div class="timeline-progress" id="timeline-progress"></div>
+              <div class="playhead" id="playhead" hidden></div>
+              <span class="timeline-empty">Los momentos guardados aparecerán acá</span>
+            </div>
+          </div>
+          <p class="timeline-footnote"><span class="legend-dot"></span> Cada punto te lleva a un momento del video</p>
+        </section>
+      </div>
+
+      <aside class="comments-card">
+        <div class="section-heading comments-heading">
+          <div><span class="section-index">02</span><h2>Momentos</h2></div>
+          <span class="comment-count" id="list-count">0</span>
+        </div>
+        <form class="comment-form" id="comment-form">
+          <div class="capture-row">
+            <div class="capture-time"><span class="capture-dot"></span><span id="current-time">00:00</span><span class="capture-caption">momento actual</span></div>
+            <button class="capture-button" id="capture-button" type="button" title="Actualizar al momento actual" aria-label="Actualizar al momento actual">⟳</button>
+          </div>
+          <label class="sr-only" for="comment-text">Escribí tu comentario</label>
+          <textarea id="comment-text" rows="3" maxlength="500" placeholder="¿Qué querés recordar de este momento?" disabled></textarea>
+          <div class="color-label"><span>Elegí un color</span><span id="selected-color-name">Coral</span></div>
+          <div class="color-picker" id="color-picker" role="radiogroup" aria-label="Color del comentario"></div>
+          <p class="error-message comment-error" id="comment-error" role="alert" hidden></p>
+          <button class="save-button" id="save-button" type="submit" disabled><span>Guardar momento</span><span aria-hidden="true">＋</span></button>
+        </form>
+        <div class="comments-list" id="comments-list" aria-live="polite">
+          <div class="empty-state" id="empty-state">
+            <span class="empty-icon" aria-hidden="true">✳</span>
+            <p>Tus momentos guardados<br>van a vivir acá.</p>
+          </div>
+        </div>
+        <p class="storage-note"><span aria-hidden="true">⌑</span> Privado y guardado en tu navegador</p>
+      </aside>
+    </section>
+    <footer>Hecho para volver a lo que importa. <span>·</span> Tus comentarios no salen de este navegador.</footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
