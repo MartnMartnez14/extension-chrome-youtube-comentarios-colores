@@ -6,3 +6,11 @@ preview.html
 .env
 .env.*
 !.env.example
+dist/
+build/
+*.zip
+*.crx
+*.pem
+.DS_Store
+demo/Captura*
+

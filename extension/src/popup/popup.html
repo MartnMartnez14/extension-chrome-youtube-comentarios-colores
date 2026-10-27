@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YT Temporal Comments</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="popup-shell">
+    <header class="popup-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">▶</span>
+        <span>YT <strong>Temporal</strong></span>
+      </div>
+      <span class="version-pill">v0.2.0</span>
+    </header>
+
+    <section class="stats-grid" aria-label="Resumen de actividad">
+      <div class="stat-card">
+        <span class="stat-value" id="stat-videos">0</span>
+        <span class="stat-label">Videos con notas</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-comments">0</span>
+        <span class="stat-label">Momentos guardados</span>
+      </div>
+    </section>
+
+    <section class="sync-row" aria-label="Configuración de sincronización">
+      <div class="sync-info">
+        <label for="sync-toggle" class="sync-title">Sincronizar con Chrome Sync</label>
+        <span class="sync-sub">Guarda copia en tu cuenta de Google</span>
+      </div>
+      <input type="checkbox" id="sync-toggle" class="sync-checkbox" checked>
+    </section>
+
+    <section class="videos-section" aria-label="Videos guardados">
+      <div class="section-head">
+        <h2>Tus videos recientes</h2>
+      </div>
+      <div class="videos-list" id="videos-list" aria-live="polite">
+        <p class="empty-msg" id="empty-msg">Abrí cualquier video en YouTube para empezar a guardar momentos.</p>
+      </div>
+    </section>
+
+    <section class="backup-actions" aria-label="Respaldo de datos">
+      <button type="button" class="action-btn primary-btn" id="export-btn">Exportar JSON</button>
+      <button type="button" class="action-btn secondary-btn" id="import-btn">Importar JSON</button>
+      <input type="file" id="import-file" accept=".json,application/json" hidden>
+    </section>
+
+    <p class="status-msg" id="status-msg" role="status" aria-live="polite" hidden></p>
+  </main>
+
+  <script src="../utils/common.js"></script>
+  <script src="../storage/store.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
